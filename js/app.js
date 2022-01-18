@@ -43,6 +43,14 @@ const getWeather = () => {
                                 iconName = "rainy-3";
                             }
                             break;
+                        case "Snow":
+                            if (data.weather[0].icon.includes("n")) {
+                                iconName = "snowy-6";
+                            }
+                            if (data.weather[0].icon.includes("d")) {
+                                iconName = "snowy-3";
+                            }
+                            break;
                     }
 
                     const content = document.getElementById("weather-content");
