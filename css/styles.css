@@ -88,7 +88,7 @@ body {
 }
 .weather-info .info {
     font-weight: 300;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #d2d2d2;
     opacity: 0;
     transform: translateX(150px);
@@ -101,6 +101,10 @@ body {
 .weather-info .info .date {
     font-size: 1.5rem;
 }
+.weather-info .info .description {
+    font-size: 1.5rem;
+}
+
 
 .unit {
     color: #b8b8b8;

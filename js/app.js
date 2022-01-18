@@ -15,10 +15,33 @@ const getWeather = () => {
                 if (respuesta.status === 200) {
                     const data = await respuesta.json();
 
+                    console.log(data);
+
                     let iconName = "";
                     switch (data.weather[0].main) {
-                        case  "Clouds":
-                            iconName = "cloudy";
+                        case "Clouds":
+                            if (data.weather[0].icon.includes("n")) {
+                                iconName = "cloudy-night-1";
+                            }
+                            if (data.weather[0].icon.includes("d")) {
+                                iconName = "cloudy-day-1";
+                            }
+                            break;
+                        case "Clear":
+                            if (data.weather[0].icon.includes("n")) {
+                                iconName = "night";
+                            }
+                            if (data.weather[0].icon.includes("d")) {
+                                iconName = "day";
+                            }
+                            break;
+                        case "Rain":
+                            if (data.weather[0].icon.includes("n")) {
+                                iconName = "rainy-7";
+                            }
+                            if (data.weather[0].icon.includes("d")) {
+                                iconName = "rainy-3";
+                            }
                             break;
                     }
 
@@ -48,7 +71,7 @@ const getWeather = () => {
                             <div class="weather-icon">
                                 <img
                                     class="icon"
-                                    src="weather-icons/animated/${iconName}.svg"
+                                    /* src="weather-icons/animated/${iconName}.svg" */
                                     alt=""
                                 />
                             </div>
@@ -57,6 +80,9 @@ const getWeather = () => {
                                     data.main.temp
                                 )}<span class="unit">°C</span></h5>
                                 <h2 class="info">
+                                    <span id="weather-description" class="description">
+                                        ${data.weather[0].description}
+                                    </span>
                                     <p id="weather-day" class="day">${day} <span id="weather-date" class="date">${wDate}</span></p>
                                     <span id="weather-city-name" class="location">
                                         ${data.name + ", " + data.sys.country}
